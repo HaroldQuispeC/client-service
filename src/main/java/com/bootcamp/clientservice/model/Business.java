@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Business {
 
-    private String idClient;
+    private String idBusiness;
     private String businessName;
     private String ruc;
 }

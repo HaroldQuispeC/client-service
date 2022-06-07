@@ -18,6 +18,7 @@ public class Client {
     private String country;
     private String address;
     private String clientType;
+    private String status;
 
     private NaturalPerson naturalPerson;
 

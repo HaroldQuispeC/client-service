@@ -27,18 +27,13 @@ public class ClientController {
     }
 
     @GetMapping("/findByDocument/{dni}")
-    public Mono<Client> findByDocumentNumber(@PathVariable String dni){
+    public Mono<Client> findByDocumentNumber(@PathVariable("dni") String dni){
         return clientService.getClientByDocumentNumber(dni);
     }
 
     @PutMapping("/updateClient/{id}")
-    public Mono<ResponseEntity<Client>> updateNaturaPerson(@PathVariable String id, @RequestBody Client client){
+    public Mono<ResponseEntity<Client>> updateNaturaPerson(@PathVariable("id") String id, @RequestBody Client client){
         return clientService.updateNaturalPerson(id,client);
-    }
-
-    @DeleteMapping("/deleteNaturalPerson/{dni}")
-    public void deleteNaturalPerson(@PathVariable String dni){
-        clientService.deleteNaturalPerson(dni);
     }
 
     @PostMapping("/createClientBusiness")
@@ -47,13 +42,13 @@ public class ClientController {
     }
 
     @GetMapping("/findByRuc/{ruc}")
-    public Mono<Client> findByRuc(@PathVariable String ruc){
+    public Mono<Client> findByRuc(@PathVariable("ruc") String ruc){
 
         return clientService.getClientByRuc(ruc);
     }
 
     @PutMapping("/updateBusiness/{id}")
-    public Mono<ResponseEntity<Client>> updateBusiness(@PathVariable String id, @RequestBody Client client){
+    public Mono<ResponseEntity<Client>> updateBusiness(@PathVariable("id") String id, @RequestBody Client client){
         return clientService.updateBusiness(id,client);
     }
 

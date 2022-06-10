@@ -30,9 +30,12 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Mono<Client> getClientByDocumentNumber(String dni) {
+
         Mono<Client> retrievedClientByDni = clientRepository.findAll()
-                .filter(client -> client.getNaturalPerson().getDocumentNumber().equals(dni)).take(1).single();
+                .filter(client -> client.getNaturalPerson().getDocumentNumber().equals(dni))
+                .single();
         return retrievedClientByDni;
+
     }
 
     @Override
@@ -74,13 +77,4 @@ public class ClientServiceImpl implements ClientService {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-    @Override
-    public void deleteNaturalPerson(String dni) {
-        Mono<Client> client = getClientByDocumentNumber(dni);
-        client.map(c -> {
-            c.setStatus("INACTIVE");
-            return clientRepository.save(c);
-        }).map(newClient -> new ResponseEntity<>(newClient, HttpStatus.OK))
-                .defaultIfEmpty(ResponseEntity.notFound().build());
-    }
 }

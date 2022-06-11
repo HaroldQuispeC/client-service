@@ -17,7 +17,6 @@ public class ClientController {
 
     @GetMapping("/")
     public Flux<Client> getAll(){
-
         return clientService.findAll();
     }
 
@@ -43,7 +42,6 @@ public class ClientController {
 
     @GetMapping("/findByRuc/{ruc}")
     public Mono<Client> findByRuc(@PathVariable("ruc") String ruc){
-
         return clientService.getClientByRuc(ruc);
     }
 

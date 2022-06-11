@@ -6,6 +6,9 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+import java.util.List;
+
 @Data
 @Getter
 @Setter
@@ -14,13 +17,13 @@ public class Client {
 
     @Id
     private String idClient;
-    private String joiningDate;
+    private Date joiningDate;
     private String country;
     private String address;
     private String clientType;
     private String status;
-
+    private List<String> phones;
+    private List<String> emails;
     private NaturalPerson naturalPerson;
-
     private Business business;
 }

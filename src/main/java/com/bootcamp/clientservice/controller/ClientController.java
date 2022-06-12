@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/client")
 public class ClientController {
@@ -23,17 +25,18 @@ public class ClientController {
 
     @PostMapping("/createClient")
     public Mono<Client> createClient(@RequestBody Client client){
+
         return clientService.createClient(client);
     }
 
     @GetMapping("/findByDocument/{dni}")
-    public Mono<Client> findByDocumentNumber(@PathVariable("dni") String dni){
+    public Mono<Client> getClientByDocumentNumber(@PathVariable("dni") String dni){
         return clientService.getClientByDocumentNumber(dni);
     }
 
-    @PutMapping("/updateClient/{id}")
-    public Mono<ResponseEntity<Client>> updateNaturaPerson(@PathVariable("id") String id, @RequestBody Client client){
-        return clientService.updateNaturalPerson(id,client);
+    @PutMapping("/updateClient/{dni}")
+    public Mono<Client> updateNaturalPerson(@PathVariable("dni") String dni, @RequestBody Client client){
+        return clientService.updateNaturalPerson(dni,client);
     }
 
     @PostMapping("/createClientBusiness")
@@ -47,9 +50,9 @@ public class ClientController {
         return clientService.getClientByRuc(ruc);
     }
 
-    @PutMapping("/updateBusiness/{id}")
-    public Mono<ResponseEntity<Client>> updateBusiness(@PathVariable("id") String id, @RequestBody Client client){
-        return clientService.updateBusiness(id,client);
+    @PutMapping("/updateBusiness/{ruc}")
+    public Mono<Client> updateBusiness(@PathVariable("ruc") String ruc, @RequestBody Client client){
+        return clientService.updateBusiness(ruc,client);
     }
 
 

@@ -10,6 +10,4 @@ public class Business {
     private String idBusiness;
     private String businessName;
     private String ruc;
-    private ArrayList<NaturalPerson> holders;
-    private ArrayList<NaturalPerson> signers;
 }

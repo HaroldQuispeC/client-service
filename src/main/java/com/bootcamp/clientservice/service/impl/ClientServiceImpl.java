@@ -2,6 +2,7 @@ package com.bootcamp.clientservice.service.impl;
 
 import com.bootcamp.clientservice.model.Business;
 import com.bootcamp.clientservice.model.Client;
+import com.bootcamp.clientservice.model.Constants;
 import com.bootcamp.clientservice.model.NaturalPerson;
 import com.bootcamp.clientservice.repository.ClientRepository;
 import com.bootcamp.clientservice.service.ClientService;
@@ -45,7 +46,7 @@ public class ClientServiceImpl implements ClientService {
 
         logger.info("Get entity client by Document Number");
         Mono<Client> clientNaturalPerson = clientRepository.findAll()
-                .filter(client -> client.getClientType().equals("1"))
+                .filter(client -> client.getClientType().equals(Constants.NATURAL_PERSON_CLIENT))
                 .filter(c -> c.getNaturalPerson().getDocumentNumber().equals(dni)).take(1).single();
         return clientNaturalPerson;
     }
@@ -89,7 +90,7 @@ public class ClientServiceImpl implements ClientService {
         }
         logger.info("Get entity business client by RUC");
         Mono<Client> clientsBusiness = clientRepository.findAll()
-                .filter(c -> c.getClientType().equals("2"))
+                .filter(c -> c.getClientType().equals(Constants.BUSINESS_CLIENT))
                 .filter(b -> b.getBusiness().getRuc().equals(ruc)).take(1).single();
         return clientsBusiness;
     }

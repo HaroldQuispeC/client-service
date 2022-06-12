@@ -2,10 +2,10 @@ package com.bootcamp.clientservice.service.impl;
 
 import com.bootcamp.clientservice.model.Business;
 import com.bootcamp.clientservice.model.Client;
-import com.bootcamp.clientservice.model.Constants;
 import com.bootcamp.clientservice.model.NaturalPerson;
 import com.bootcamp.clientservice.repository.ClientRepository;
 import com.bootcamp.clientservice.service.ClientService;
+import com.bootcamp.clientservice.util.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

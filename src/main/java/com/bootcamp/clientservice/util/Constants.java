@@ -1,4 +1,4 @@
-package com.bootcamp.clientservice.model;
+package com.bootcamp.clientservice.util;
 
 public class Constants {
     public static final String NATURAL_PERSON_CLIENT = "1";

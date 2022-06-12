@@ -30,7 +30,7 @@ public class ClientController {
     }
 
     @GetMapping("/findByDocument/{dni}")
-    public Mono<Client> getClientByDocumentNumber(@PathVariable("dni") String dni){
+    public Mono<Client> findByDocumenNumber(@PathVariable("dni") String dni){
         return clientService.getClientByDocumentNumber(dni);
     }
 

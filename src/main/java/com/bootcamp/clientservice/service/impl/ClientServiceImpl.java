@@ -47,7 +47,11 @@ public class ClientServiceImpl implements ClientService {
         logger.info("Get entity client by Document Number");
         Mono<Client> clientNaturalPerson = clientRepository.findAll()
                 .filter(client -> client.getClientType().equals(Constants.NATURAL_PERSON_CLIENT))
-                .filter(c -> c.getNaturalPerson().getDocumentNumber().equals(dni)).take(1).single();
+                .filter(c -> c.getNaturalPerson().getDocumentNumber().equals(dni)).take(1).single()
+                .onErrorResume(error -> {
+                    logger.error("No se encuentra registrado el DNI"+ dni, error.getMessage());
+                    return Mono.empty();
+                });
         return clientNaturalPerson;
     }
 
@@ -91,7 +95,11 @@ public class ClientServiceImpl implements ClientService {
         logger.info("Get entity business client by RUC");
         Mono<Client> clientsBusiness = clientRepository.findAll()
                 .filter(c -> c.getClientType().equals(Constants.BUSINESS_CLIENT))
-                .filter(b -> b.getBusiness().getRuc().equals(ruc)).take(1).single();
+                .filter(b -> b.getBusiness().getRuc().equals(ruc)).take(1).single()
+                .onErrorResume(error -> {
+                    logger.error("No se encuentra registrado el RUC"+ ruc, error.getMessage());
+                    return Mono.empty();
+                });
         return clientsBusiness;
     }
 

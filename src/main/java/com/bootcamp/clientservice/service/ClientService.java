@@ -1,11 +1,9 @@
 package com.bootcamp.clientservice.service;
 
 import com.bootcamp.clientservice.model.Client;
-import org.springframework.http.ResponseEntity;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.List;
 
 public interface ClientService {
     Flux<Client> findAll();

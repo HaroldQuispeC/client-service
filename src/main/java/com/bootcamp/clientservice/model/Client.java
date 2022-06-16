@@ -20,7 +20,7 @@ public class Client {
     private Date joiningDate;
     private String country;
     private String address;
-    private String clientType;
+    private ClientType clientType;
     private String status;
     private List<String> phones;
     private List<String> emails;

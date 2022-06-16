@@ -41,7 +41,7 @@ public class ClientServiceImpl implements ClientService {
 
         logger.info("Get entity client by Document Number");
         return clientRepository.findAll()
-                .filter(client -> client.getClientType().trim().equals(Constant.IncomeAccountTypeId.PERSONAL_CREDIT_ID.type) &&
+                .filter(client -> client.getClientType().getClientTypeId().equals(Constant.IncomeAccountTypeId.PERSONAL_CREDIT_ID.type) &&
                         client.getNaturalPerson().getDocumentNumber().trim().equals(dni)).singleOrEmpty();
     }
 

@@ -31,7 +31,7 @@ public class ClientController {
     }
 
     @PutMapping("/updateClient/{id}")
-    public Mono<ResponseEntity<Client>> updateNaturaPerson(@PathVariable("id") String id, @RequestBody Client client){
+    public Mono<ResponseEntity<Client>> updateNaturalPerson(@PathVariable("id") String id, @RequestBody Client client){
         return clientService.updateNaturalPerson(id,client);
     }
 

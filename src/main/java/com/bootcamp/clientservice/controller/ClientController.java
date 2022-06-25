@@ -3,57 +3,65 @@ package com.bootcamp.clientservice.controller;
 import com.bootcamp.clientservice.model.Client;
 import com.bootcamp.clientservice.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.List;
 
+/**
+ * ClientController.
+ */
 @RestController
 @RequestMapping("/api/client")
 public class ClientController {
 
-    @Autowired
-    private ClientService clientService;
+  @Autowired
+  private ClientService clientService;
 
-    @GetMapping("/")
-    public Flux<Client> getAll(){
+  @GetMapping("/")
+  public Flux<Client> getAll() {
 
-        return clientService.findAll();
-    }
+    return clientService.findAll();
+  }
 
-    @PostMapping("/createClient")
-    public Mono<Client> createClient(@RequestBody Client client){
+  @PostMapping("/createClient")
+  public Mono<Client> createClient(@RequestBody Client client) {
 
-        return clientService.createClient(client);
-    }
+    return clientService.createClient(client);
+  }
 
-    @GetMapping("/findByDocument/{dni}")
-    public Mono<Client> findByDocumenNumber(@PathVariable("dni") String dni){
-        return clientService.getClientByDocumentNumber(dni);
-    }
+  @GetMapping("/findByDocument/{dni}")
+  public Mono<Client> findByDocumenNumber(@PathVariable("dni") String dni) {
+    return clientService.getClientByDocumentNumber(dni);
+  }
 
-    @PutMapping("/updateClient/{dni}")
-    public Mono<Client> updateNaturalPerson(@PathVariable("dni") String dni, @RequestBody Client client){
-        return clientService.updateNaturalPerson(dni,client);
-    }
+  @PutMapping("/updateClient/{dni}")
+  public Mono<Client> updateNaturalPerson(@PathVariable("dni") String dni,
+                                          @RequestBody Client client) {
+    return clientService.updateNaturalPerson(dni, client);
+  }
 
-    @PostMapping("/createClientBusiness")
-    public Mono<Client> createClientBusiness(@RequestBody Client client){
-        return clientService.createClientBusiness(client);
-    }
+  @PostMapping("/createClientBusiness")
+  public Mono<Client> createClientBusiness(@RequestBody Client client) {
+    return clientService.createClientBusiness(client);
+  }
 
-    @GetMapping("/findByRuc/{ruc}")
-    public Mono<Client> findByRuc(@PathVariable("ruc") String ruc){
+  @GetMapping("/findByRuc/{ruc}")
+  public Mono<Client> findByRuc(@PathVariable("ruc") String ruc) {
 
-        return clientService.getClientByRuc(ruc);
-    }
+    return clientService.getClientByRuc(ruc);
+  }
 
-    @PutMapping("/updateBusiness/{ruc}")
-    public Mono<Client> updateBusiness(@PathVariable("ruc") String ruc, @RequestBody Client client){
-        return clientService.updateBusiness(ruc,client);
-    }
+  @PutMapping("/updateBusiness/{ruc}")
+  public Mono<Client> updateBusiness(@PathVariable("ruc") String ruc, @RequestBody Client client) {
+    return clientService.updateBusiness(ruc, client);
+  }
 
 
 }
